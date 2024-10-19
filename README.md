@@ -76,3 +76,20 @@ npm run test:e2e -- --debug
 ```sh
 npm run lint
 ```
+
+## 功能列表 / Features
+
+用户管理 / User Management
+权限控制 / Permission Control
+数据可视化 / Data Visualization
+响应式布局 / Responsive Layout
+
+## 技术栈 / Technology Stack
+
+Vue 3
+Vite
+Element Plus
+TypeScript
+Axios
+Pinia
+MSW (Mock Service Worker)

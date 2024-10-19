@@ -24,6 +24,23 @@ Whether as a sample project for learning Vue 3 and its related technologies or a
 
 TypeScript cannot handle type information for `.vue` imports by default, so we replace the `tsc` CLI with `vue-tsc` for type checking. In editors, we need [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) to make the TypeScript language service aware of `.vue` types.
 
+## 功能列表 / Features
+
+- 用户管理 / User Management
+- 权限控制 / Permission Control
+- 数据可视化 / Data Visualization
+- 响应式布局 / Responsive Layout
+
+## 技术栈 / Technology Stack
+
+- Vue 3
+- Vite
+- Element Plus
+- TypeScript
+- Axios
+- Pinia
+- MSW (Mock Service Worker)
+
 ## Customize configuration
 
 See [Vite Configuration Reference](https://vite.dev/config/).
@@ -76,20 +93,3 @@ npm run test:e2e -- --debug
 ```sh
 npm run lint
 ```
-
-## 功能列表 / Features
-
-用户管理 / User Management
-权限控制 / Permission Control
-数据可视化 / Data Visualization
-响应式布局 / Responsive Layout
-
-## 技术栈 / Technology Stack
-
-Vue 3
-Vite
-Element Plus
-TypeScript
-Axios
-Pinia
-MSW (Mock Service Worker)

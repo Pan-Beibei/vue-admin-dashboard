@@ -1,6 +1,8 @@
 # vue-admin-dashboard
 
-This template should help get you started developing with Vue 3 in Vite.
+This template should help get you started developing with Vue 3 in Vite. It includes a modern admin dashboard system built with Vue 3, Vite, Element Plus, TypeScript, Axios, and Pinia.
+
+这个模板可以帮助你开始使用 Vue 3 和 Vite 进行开发。它包括一个使用 Vue 3、Vite、Element Plus、TypeScript、Axios 和 Pinia 构建的现代化后台管理系统。
 
 ## 项目简介 / Project Introduction
 

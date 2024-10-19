@@ -2,6 +2,20 @@
 
 This template should help get you started developing with Vue 3 in Vite.
 
+## 项目简介 / Project Introduction
+
+`vue-admin-dashboard` 是一个基于 Vue 3 构建的现代化后台管理系统。项目采用了 Vue 3、Vite、Element Plus、TypeScript、Axios 和 Pinia 等技术栈，旨在提供一个高效、灵活的管理系统基础框架。
+
+`vue-admin-dashboard` is a modern admin dashboard system built with Vue 3. The project uses technologies such as Vue 3, Vite, Element Plus, TypeScript, Axios, and Pinia to provide an efficient and flexible foundation for management systems.
+
+项目中使用了 MSW（Mock Service Worker）来拦截和模拟数据响应，方便开发和测试。通过简单的配置修改，`vue-admin-dashboard` 可以快速适应不同的业务需求，成为一个功能强大的后台管理系统。
+
+The project uses MSW (Mock Service Worker) to intercept and simulate data responses, making development and testing easier. With simple configuration modifications, `vue-admin-dashboard` can quickly adapt to different business needs and become a powerful admin dashboard system.
+
+无论是作为学习 Vue 3 及其相关技术栈的示例项目，还是作为实际项目的基础框架，`vue-admin-dashboard` 都是一个理想的选择。
+
+Whether as a sample project for learning Vue 3 and its related technologies or as a foundation for actual projects, `vue-admin-dashboard` is an ideal choice.
+
 ## Recommended IDE Setup
 
 [VSCode](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur).

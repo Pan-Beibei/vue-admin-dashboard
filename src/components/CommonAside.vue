@@ -1,0 +1,122 @@
+<script lang="ts" setup>
+import { shallowRef, computed } from "vue";
+import { House, Setting, Location, User, Goods } from "@element-plus/icons-vue";
+import { useAllDataStore } from "@/stores";
+
+const list = shallowRef([
+  {
+    path: "/home",
+    name: "home",
+    label: "首页",
+    icon: House,
+    url: "Home",
+  },
+  {
+    path: "/mall",
+    name: "mall",
+    label: "商品管理",
+    icon: Goods,
+    url: "Mall",
+  },
+  {
+    path: "/user",
+    name: "user",
+    label: "用户管理",
+    icon: User,
+    url: "User",
+  },
+  {
+    path: "other",
+    label: "其他",
+    icon: Location,
+    children: [
+      {
+        path: "/page1",
+        name: "page1",
+        label: "页面1",
+        icon: Setting,
+        url: "Page1",
+      },
+      {
+        path: "/page2",
+        name: "page2",
+        label: "页面2",
+        icon: Setting,
+        url: "Page2",
+      },
+    ],
+  },
+]);
+
+const noChildren = computed(() => list.value.filter((item) => !item.children));
+const hasChildren = computed(() => list.value.filter((item) => item.children));
+
+const store = useAllDataStore();
+
+const isCollapse = computed(() => store.state.isCollapse);
+//width
+const width = computed(() => (store.state.isCollapse ? "64px" : "180px"));
+</script>
+
+<template>
+  <el-aside :width="width">
+    <el-menu
+      default-active="2"
+      text-color="#fff"
+      background-color="#545c64"
+      :collapse="isCollapse"
+      :collapse-transition="false"
+    >
+      <h3 v-show="!isCollapse">通用管理系统后台</h3>
+      <h3 v-show="isCollapse">后台</h3>
+      <el-menu-item
+        v-for="item in noChildren"
+        :key="item.path"
+        :index="item.path"
+      >
+        <component class="icons" :is="item.icon"></component>
+        <span>{{ item.label }}</span>
+      </el-menu-item>
+      <el-sub-menu
+        v-for="item in hasChildren"
+        :index="item.path"
+        :key="item.path"
+      >
+        <template #title>
+          <component class="icons" :is="item.icon"></component>
+          <span>{{ item.label }}</span>
+        </template>
+        <el-menu-item-group>
+          <el-menu-item
+            v-for="subItem in item.children"
+            :index="subItem.path"
+            :key="subItem.path"
+          >
+            <component class="icons" :is="subItem.icon"></component>
+            <span>{{ subItem.label }}</span>
+          </el-menu-item>
+        </el-menu-item-group>
+      </el-sub-menu>
+    </el-menu>
+  </el-aside>
+</template>
+
+<style lang="scss" scoped>
+.icons {
+  width: 18px;
+  height: 18px;
+  margin-right: 5px;
+}
+.el-menu {
+  border-right: none;
+  h3 {
+    line-height: 48px;
+    color: #fff;
+    text-align: center;
+  }
+}
+.el-aside {
+  height: 100%;
+  background-color: #545c64;
+}
+</style>

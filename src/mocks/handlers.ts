@@ -8,4 +8,7 @@ export const handlers = [
   http.get(/\/home\/getCountData/, () => {
     return HttpResponse.json(hoemApi.getCountData());
   }),
+  http.get(/\/home\/getChartData/, () => {
+    return HttpResponse.json(hoemApi.getChartData());
+  }),
 ];

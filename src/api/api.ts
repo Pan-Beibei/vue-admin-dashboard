@@ -4,6 +4,8 @@ import type {
   TableDataResponse,
   CountDataResponse,
   ChartDataResponse,
+  UserListResponse,
+  QueryUserParams,
 } from "./type";
 
 const api: ApiDefinition = {
@@ -26,6 +28,14 @@ const api: ApiDefinition = {
     return request<ChartDataResponse>({
       url: "/home/getChartData",
       method: "get",
+      // mock: false   // 可以局部控制开关
+    });
+  },
+  getUserData(params: QueryUserParams) {
+    return request<UserListResponse>({
+      url: "/user/getUserData/",
+      method: "get",
+      data: params,
       // mock: false   // 可以局部控制开关
     });
   },

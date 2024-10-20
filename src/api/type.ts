@@ -2,6 +2,7 @@ export interface ApiDefinition {
   getTableData: () => Promise<TableDataResponse>;
   getCountData: () => Promise<CountDataResponse>;
   getChartData: () => Promise<ChartDataResponse>;
+  getUserData: (params: QueryUserParams) => Promise<UserListResponse>;
 }
 
 export interface TableData {
@@ -59,3 +60,26 @@ export interface ChartData {
 
 // 定义 API 返回类型
 export type ChartDataResponse = ChartData;
+
+export interface User {
+  id: string;
+  name: string;
+  addr: string;
+  age: number;
+  birth: string;
+  sex: number;
+  sexLabel?: string;
+}
+
+// export type UserListResponse = User[];
+
+export interface UserListResponse {
+  count: number;
+  list: User[];
+}
+
+export interface QueryUserParams {
+  name: string;
+  page: number;
+  total: number;
+}

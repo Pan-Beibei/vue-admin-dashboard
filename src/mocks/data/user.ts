@@ -91,6 +91,7 @@ export default {
    */
   createUser: (config: any) => {
     const { name, addr, age, birth, sex } = JSON.parse(config.body);
+
     List.unshift({
       id: faker.string.uuid(),
       name: name,

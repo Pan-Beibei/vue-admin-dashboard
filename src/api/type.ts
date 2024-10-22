@@ -4,6 +4,7 @@ export interface ApiDefinition {
   getChartData: () => Promise<ChartDataResponse>;
   getUserData: (params: QueryUserParams) => Promise<UserListResponse>;
   deleteUser: (params: DeleteUserParams) => Promise<OperationResult>;
+  addUser: (params: AddUserParams) => Promise<AddResult>;
 }
 
 export interface TableData {
@@ -92,4 +93,19 @@ export interface DeleteUserParams {
 export interface OperationResult {
   isSuccess: boolean;
   message?: string;
+}
+
+export interface AddUserParams {
+  name: string;
+  addr: string;
+  age: number;
+  birth: string;
+  sex: number;
+}
+
+export interface AddResult {
+  isSuccess: boolean;
+  data: {
+    message: string;
+  };
 }

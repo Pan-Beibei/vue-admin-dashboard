@@ -13,13 +13,13 @@ export const handlers = [
     return HttpResponse.json(hoemApi.getChartData());
   }),
   http.get(RegExp(`/api/user/getUserData` + ".*"), (req) => {
-    console.log(req);
-
     return HttpResponse.json(userApi.getUserList(req.request));
   }),
   http.get(RegExp(`/api/user/deleteUser` + ".*"), (req) => {
-    console.log(req);
-
     return HttpResponse.json(userApi.deleteUser(req.request));
+  }),
+  http.post(RegExp(`/api/user/addUser` + ".*"), async (req) => {
+    const body = JSON.stringify(await req.request.json());
+    return HttpResponse.json(userApi.createUser({ body }));
   }),
 ];

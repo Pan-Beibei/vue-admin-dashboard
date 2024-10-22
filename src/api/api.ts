@@ -8,6 +8,8 @@ import type {
   QueryUserParams,
   DeleteUserParams,
   OperationResult,
+  AddUserParams,
+  AddResult,
 } from "./type";
 
 const api: ApiDefinition = {
@@ -45,6 +47,16 @@ const api: ApiDefinition = {
     return request<OperationResult>({
       url: "/user/deleteUser/",
       method: "get",
+      data: params,
+      // mock: false   // 可以局部控制开关
+    });
+  },
+  addUser(params: AddUserParams) {
+    console.log(params);
+
+    return request<AddResult>({
+      url: "/user/addUser/",
+      method: "post",
       data: params,
       // mock: false   // 可以局部控制开关
     });

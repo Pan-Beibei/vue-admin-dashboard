@@ -6,6 +6,8 @@ import type {
   ChartDataResponse,
   UserListResponse,
   QueryUserParams,
+  DeleteUserParams,
+  OperationResult,
 } from "./type";
 
 const api: ApiDefinition = {
@@ -34,6 +36,14 @@ const api: ApiDefinition = {
   getUserData(params: QueryUserParams) {
     return request<UserListResponse>({
       url: "/user/getUserData/",
+      method: "get",
+      data: params,
+      // mock: false   // 可以局部控制开关
+    });
+  },
+  deleteUser(params: DeleteUserParams) {
+    return request<OperationResult>({
+      url: "/user/deleteUser/",
       method: "get",
       data: params,
       // mock: false   // 可以局部控制开关

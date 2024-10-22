@@ -3,6 +3,7 @@ export interface ApiDefinition {
   getCountData: () => Promise<CountDataResponse>;
   getChartData: () => Promise<ChartDataResponse>;
   getUserData: (params: QueryUserParams) => Promise<UserListResponse>;
+  deleteUser: (params: DeleteUserParams) => Promise<OperationResult>;
 }
 
 export interface TableData {
@@ -82,4 +83,13 @@ export interface QueryUserParams {
   name: string;
   page: number;
   total: number;
+}
+
+export interface DeleteUserParams {
+  id: string;
+}
+
+export interface OperationResult {
+  isSuccess: boolean;
+  message?: string;
 }

@@ -17,4 +17,9 @@ export const handlers = [
 
     return HttpResponse.json(userApi.getUserList(req.request));
   }),
+  http.get(RegExp(`/api/user/deleteUser` + ".*"), (req) => {
+    console.log(req);
+
+    return HttpResponse.json(userApi.deleteUser(req.request));
+  }),
 ];

@@ -1,8 +1,9 @@
 <script setup lang="ts">
-import { ref, reactive, inject, onMounted } from "vue";
+import { ref, reactive, inject, onMounted, markRaw } from "vue";
 import { apiInjectionKey } from "@/config/key";
 import type { ApiDefinition } from "@/api/type";
 import type { User, QueryUserParams } from "@/api/type";
+import { Delete } from "@element-plus/icons-vue";
 
 const userData = ref<Array<User>>();
 const formInline = reactive({
@@ -69,6 +70,30 @@ function handleChange(page: number) {
   config.page = page;
   getUserData();
 }
+
+function handleEdit(row: User) {
+  console.log(row);
+}
+
+function handleDelete(row: User) {
+  // 提示
+  ElMessageBox.confirm("你确定要删除吗？", "确定", {
+    type: "warning",
+    icon: markRaw(Delete),
+  }).then(async () => {
+    console.log("删除");
+
+    await api?.deleteUser({
+      id: row.id,
+    });
+    ElMessage({
+      showClose: true,
+      message: "删除成功",
+      type: "success",
+    });
+    getUserData();
+  });
+}
 </script>
 
 <template>
@@ -98,7 +123,7 @@ function handleChange(page: number) {
       />
 
       <el-table-column fixed="right" label="Operations" min-width="120">
-        <template #="scope">
+        <template #default="scope">
           <el-button type="primary" size="small" @click="handleEdit(scope.row)">
             编辑
           </el-button>

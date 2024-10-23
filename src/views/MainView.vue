@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import CommonAside from "@/components/CommonAside.vue";
 import CommonHeader from "@/components/CommonHeader.vue";
+import CommonTab from "@/components/CommonTab.vue";
 </script>
 
 <template>
@@ -17,7 +18,7 @@ import CommonHeader from "@/components/CommonHeader.vue";
           <common-header />
         </el-header>
         <!--        // 引入Tab-->
-        <!-- <common-tab /> -->
+        <common-tab />
         <el-main class="right-main">
           <!--          // 主要内容使用路由切换-->
           <router-view></router-view>

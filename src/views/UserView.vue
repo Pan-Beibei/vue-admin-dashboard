@@ -1,5 +1,13 @@
 <script setup lang="ts">
-import { ref, reactive, inject, onMounted, markRaw, useTemplateRef } from "vue";
+import {
+  ref,
+  reactive,
+  inject,
+  onMounted,
+  markRaw,
+  useTemplateRef,
+  nextTick,
+} from "vue";
 import { apiInjectionKey } from "@/config/key";
 import type { ApiDefinition } from "@/api/type";
 import type { User, QueryUserParams } from "@/api/type";
@@ -73,10 +81,6 @@ function handleChange(page: number) {
   getUserData();
 }
 
-function handleEdit(row: User) {
-  console.log(row);
-}
-
 function handleDelete(row: User) {
   // 提示
   ElMessageBox.confirm("你确定要删除吗？", "确定", {
@@ -103,7 +107,7 @@ const dialogVisible = ref(false);
 const formUser = reactive({
   name: "",
   age: 0,
-  sex: 1,
+  sex: "1",
   birth: "",
   addr: "",
 });
@@ -133,6 +137,16 @@ function handleAdd() {
   dialogVisible.value = true;
   action.value = "add";
 }
+
+function handleEdit(row: User) {
+  action.value = "edit";
+  dialogVisible.value = true;
+
+  nextTick(() => {
+    Object.assign(formUser, { ...row, sex: "" + row.sex });
+  });
+}
+
 function onSubmit() {
   if (!userFormRef.value) return;
   //执行userForm表单的validate进行规则校验，传入一个回调函数，回调函数会接受到一个是否校验通过的变量
@@ -150,7 +164,7 @@ function onSubmit() {
       if (action.value == "add") {
         res = await api?.addUser(formUser);
       } else if (action.value == "edit") {
-        // res = await api?.editUser(formUser);
+        res = await api?.editUser(formUser);
       }
       //如果接口调用成功
       if (res) {

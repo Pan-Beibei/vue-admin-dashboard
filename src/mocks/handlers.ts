@@ -22,4 +22,8 @@ export const handlers = [
     const body = JSON.stringify(await req.request.json());
     return HttpResponse.json(userApi.createUser({ body }));
   }),
+  http.post(RegExp(`/api/user/editUser` + ".*"), async (req) => {
+    const body = JSON.stringify(await req.request.json());
+    return HttpResponse.json(userApi.updateUser({ body }));
+  }),
 ];

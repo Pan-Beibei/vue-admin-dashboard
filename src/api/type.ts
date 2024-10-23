@@ -3,8 +3,9 @@ export interface ApiDefinition {
   getCountData: () => Promise<CountDataResponse>;
   getChartData: () => Promise<ChartDataResponse>;
   getUserData: (params: QueryUserParams) => Promise<UserListResponse>;
-  deleteUser: (params: DeleteUserParams) => Promise<OperationResult>;
+  deleteUser: (params: DeleteUserParams) => Promise<DeleteResult>;
   addUser: (params: AddUserParams) => Promise<AddResult>;
+  editUser: (params: UpdateUserParams) => Promise<UpdateResult>;
 }
 
 export interface TableData {
@@ -90,22 +91,30 @@ export interface DeleteUserParams {
   id: string;
 }
 
-export interface OperationResult {
+export interface DeleteResult {
   isSuccess: boolean;
   message?: string;
 }
 
-export interface AddUserParams {
+interface OperationUserParams {
   name: string;
   addr: string;
   age: number;
   birth: string;
-  sex: number;
+  sex: string;
 }
 
-export interface AddResult {
+interface OperationUserResult {
   isSuccess: boolean;
   data: {
     message: string;
   };
 }
+
+export type AddUserParams = OperationUserParams;
+
+export type AddResult = OperationUserResult;
+
+export type UpdateUserParams = OperationUserParams;
+
+export type UpdateResult = OperationUserResult;

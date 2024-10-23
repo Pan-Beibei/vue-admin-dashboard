@@ -7,9 +7,11 @@ import type {
   UserListResponse,
   QueryUserParams,
   DeleteUserParams,
-  OperationResult,
+  DeleteResult,
   AddUserParams,
   AddResult,
+  UpdateUserParams,
+  UpdateResult,
 } from "./type";
 
 const api: ApiDefinition = {
@@ -44,7 +46,7 @@ const api: ApiDefinition = {
     });
   },
   deleteUser(params: DeleteUserParams) {
-    return request<OperationResult>({
+    return request<DeleteResult>({
       url: "/user/deleteUser/",
       method: "get",
       data: params,
@@ -52,10 +54,17 @@ const api: ApiDefinition = {
     });
   },
   addUser(params: AddUserParams) {
-    console.log(params);
-
     return request<AddResult>({
       url: "/user/addUser/",
+      method: "post",
+      data: params,
+      // mock: false   // 可以局部控制开关
+    });
+  },
+
+  editUser(params: UpdateUserParams) {
+    return request<UpdateResult>({
+      url: "/user/editUser/",
       method: "post",
       data: params,
       // mock: false   // 可以局部控制开关

@@ -9,6 +9,7 @@ declare module 'vue' {
   export interface GlobalComponents {
     CommonAside: typeof import('./components/CommonAside.vue')['default']
     CommonHeader: typeof import('./components/CommonHeader.vue')['default']
+    CommonTab: typeof import('./components/CommonTab.vue')['default']
     copy: typeof import('./components/CommonHeader.vue')['default']
     ElAside: typeof import('element-plus/es')['ElAside']
     ElBreadcrumb: typeof import('element-plus/es')['ElBreadcrumb']

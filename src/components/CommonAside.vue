@@ -1,7 +1,7 @@
 <script lang="ts" setup>
 import { shallowRef, computed } from "vue";
 import { House, Setting, Location, User, Goods } from "@element-plus/icons-vue";
-import { useAllDataStore, type MenuItem } from "@/stores";
+import { useAllDataStore, type MenuItemType } from "@/stores";
 import { useRoute, useRouter } from "vue-router";
 
 const list = shallowRef([
@@ -61,7 +61,7 @@ const width = computed(() => (store.state.isCollapse ? "64px" : "180px"));
 const router = useRouter();
 const route = useRoute();
 const activeMenu = computed(() => route.path);
-const handleMenu = (item: MenuItem) => {
+const handleMenu = (item: MenuItemType) => {
   router.push(item.path);
   store.selectMenu(item);
 };

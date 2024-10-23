@@ -1,3 +1,5 @@
+import type { MenuItemType } from "@/stores";
+
 export interface ApiDefinition {
   getTableData: () => Promise<TableDataResponse>;
   getCountData: () => Promise<CountDataResponse>;
@@ -6,6 +8,7 @@ export interface ApiDefinition {
   deleteUser: (params: DeleteUserParams) => Promise<DeleteResult>;
   addUser: (params: AddUserParams) => Promise<AddResult>;
   editUser: (params: UpdateUserParams) => Promise<UpdateResult>;
+  getMenu: (params: GetMenuParams) => Promise<GetMenuResult>;
 }
 
 export interface TableData {
@@ -118,3 +121,14 @@ export type AddResult = OperationUserResult;
 export type UpdateUserParams = OperationUserParams;
 
 export type UpdateResult = OperationUserResult;
+
+export interface GetMenuParams {
+  username: string;
+  password: string;
+}
+
+export interface GetMenuResult {
+  menuList: MenuItemType[];
+  token: string;
+  message: string;
+}

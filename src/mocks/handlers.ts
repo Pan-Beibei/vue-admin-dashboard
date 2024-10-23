@@ -1,5 +1,6 @@
 import hoemApi from "./data/home";
 import userApi from "./data/user";
+import menu from "./data/permission";
 import { http, HttpResponse } from "msw";
 
 export const handlers = [
@@ -25,5 +26,9 @@ export const handlers = [
   http.post(RegExp(`/api/user/editUser` + ".*"), async (req) => {
     const body = JSON.stringify(await req.request.json());
     return HttpResponse.json(userApi.updateUser({ body }));
+  }),
+  http.post(RegExp(`/api/permission/getMenu` + ".*"), async (req) => {
+    const body = JSON.stringify(await req.request.json());
+    return HttpResponse.json(menu.getMenu({ body }));
   }),
 ];

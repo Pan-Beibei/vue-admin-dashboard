@@ -12,6 +12,8 @@ import type {
   AddResult,
   UpdateUserParams,
   UpdateResult,
+  GetMenuParams,
+  GetMenuResult,
 } from "./type";
 
 const api: ApiDefinition = {
@@ -65,6 +67,15 @@ const api: ApiDefinition = {
   editUser(params: UpdateUserParams) {
     return request<UpdateResult>({
       url: "/user/editUser/",
+      method: "post",
+      data: params,
+      // mock: false   // 可以局部控制开关
+    });
+  },
+
+  getMenu(params: GetMenuParams) {
+    return request<GetMenuResult>({
+      url: "/permission/getMenu",
       method: "post",
       data: params,
       // mock: false   // 可以局部控制开关

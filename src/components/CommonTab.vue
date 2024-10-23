@@ -1,19 +1,19 @@
 <script setup lang="ts">
 import { computed } from "vue";
 import { useRoute, useRouter } from "vue-router";
-import { useAllDataStore, type MenuItem } from "@/stores";
+import { useAllDataStore, type MenuItemType } from "@/stores";
 
 const store = useAllDataStore();
 const tags = computed(() => store.state.tags);
 const route = useRoute();
 const router = useRouter();
 
-const handleMenu = (tag: MenuItem) => {
+const handleMenu = (tag: MenuItemType) => {
   router.push(tag.name);
   store.selectMenu(tag);
 };
 
-const handleClose = (tag: MenuItem, index: number) => {
+const handleClose = (tag: MenuItemType, index: number) => {
   store.updateTags(tag);
   if (tag.name !== route.name) return;
 

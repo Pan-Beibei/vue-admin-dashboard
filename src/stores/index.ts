@@ -2,7 +2,7 @@ import { House } from "@element-plus/icons-vue";
 import { defineStore } from "pinia";
 import { ref } from "vue";
 
-export interface MenuItem {
+export interface MenuItemType {
   path: string;
   name: string;
   label: string;
@@ -21,7 +21,10 @@ function initialState() {
         url: "Home",
       },
     ],
-    currentMenu: null as MenuItem | null,
+    currentMenu: null as MenuItemType | null,
+    menuList: [] as Array<MenuItemType>,
+    routerList: [],
+    token: "",
   };
 }
 
@@ -32,7 +35,7 @@ export const useAllDataStore = defineStore("allData", () => {
     state.value.isCollapse = !state.value.isCollapse;
   }
 
-  function selectMenu(val: MenuItem) {
+  function selectMenu(val: MenuItemType) {
     if (val.name === "home") {
       state.value.currentMenu = null;
     } else {
@@ -44,9 +47,13 @@ export const useAllDataStore = defineStore("allData", () => {
     }
   }
 
-  function updateTags(tag: MenuItem) {
+  function updateTags(tag: MenuItemType) {
     const index = state.value.tags.findIndex((item) => item.name === tag.name);
     state.value.tags.splice(index, 1);
+  }
+
+  function updateMenuList(list: Array<MenuItemType>) {
+    state.value.menuList = list;
   }
 
   return {
@@ -54,5 +61,6 @@ export const useAllDataStore = defineStore("allData", () => {
     switchCollapse,
     selectMenu,
     updateTags,
+    updateMenuList,
   };
 });

@@ -9,8 +9,7 @@ import {
   nextTick,
 } from "vue";
 import { apiInjectionKey } from "@/config/key";
-import type { ApiDefinition } from "@/api/type";
-import type { User, QueryUserParams } from "@/api/type";
+import type { User, QueryUserParams, ApiDefinition } from "@/api/type";
 import { Delete } from "@element-plus/icons-vue";
 import type { FormInstance, FormRules } from "element-plus";
 import { timeFormat } from "@/utils";

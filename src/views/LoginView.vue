@@ -23,7 +23,9 @@ async function handleLogin() {
   console.log(res);
   if (res?.menuList) store.updateMenuList(res?.menuList);
   if (res?.token) store.state.token = res?.token;
-  router.push("/home");
+
+  store.addMenu(router);
+  await router.push("/home");
 }
 </script>
 

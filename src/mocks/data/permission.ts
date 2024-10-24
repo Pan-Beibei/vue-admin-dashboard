@@ -1,5 +1,6 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { faker } from "@faker-js/faker";
+
 export default {
   getMenu: (config: any) => {
     const { username, password } = JSON.parse(config.body);
@@ -16,41 +17,42 @@ export default {
               path: "/home",
               name: "home",
               label: "首页",
-              icon: "house",
-              url: "Home",
+              icon: "Home",
+              url: "HomeView",
             },
             {
               path: "/mall",
               name: "mall",
               label: "商品管理",
-              icon: "video-play",
-              url: "Mall",
+              icon: "Mall",
+              url: "MallView",
             },
             {
               path: "/user",
               name: "user",
               label: "用户管理",
-              icon: "user",
-              url: "User",
+              icon: "User",
+              url: "UserView",
             },
             {
               path: "other",
               label: "其他",
-              icon: "location",
+              name: "other",
+              icon: "Location",
               children: [
                 {
                   path: "/page1",
                   name: "page1",
                   label: "页面1",
-                  icon: "setting",
-                  url: "Page1",
+                  icon: "Setting",
+                  url: "Page1View",
                 },
                 {
                   path: "/page2",
                   name: "page2",
                   label: "页面2",
-                  icon: "setting",
-                  url: "Page2",
+                  icon: "Setting",
+                  url: "Page2View",
                 },
               ],
             },
@@ -68,15 +70,15 @@ export default {
               path: "/home",
               name: "home",
               label: "首页",
-              icon: "house",
-              url: "Home",
+              icon: "Home",
+              url: "HomeView",
             },
             {
               path: "/user",
               name: "user",
               label: "用户管理",
-              icon: "user",
-              url: "User",
+              icon: "User",
+              url: "UserView",
             },
           ],
           token: faker.string.uuid(),

@@ -1,53 +1,55 @@
 <script lang="ts" setup>
-import { shallowRef, computed } from "vue";
-import { House, Setting, Location, User, Goods } from "@element-plus/icons-vue";
+import { computed } from "vue";
+
 import { useAllDataStore, type MenuItemType } from "@/stores";
 import { useRoute, useRouter } from "vue-router";
 
-const list = shallowRef([
-  {
-    path: "/home",
-    name: "home",
-    label: "首页",
-    icon: House,
-    url: "Home",
-  },
-  {
-    path: "/mall",
-    name: "mall",
-    label: "商品管理",
-    icon: Goods,
-    url: "Mall",
-  },
-  {
-    path: "/user",
-    name: "user",
-    label: "用户管理",
-    icon: User,
-    url: "User",
-  },
-  {
-    path: "other",
-    label: "其他",
-    icon: Location,
-    children: [
-      {
-        path: "/page1",
-        name: "page1",
-        label: "页面1",
-        icon: Setting,
-        url: "Page1",
-      },
-      {
-        path: "/page2",
-        name: "page2",
-        label: "页面2",
-        icon: Setting,
-        url: "Page2",
-      },
-    ],
-  },
-]);
+// const list = shallowRef([
+//   {
+//     path: "/home",
+//     name: "home",
+//     label: "首页",
+//     icon: House,
+//     url: "Home",
+//   },
+//   {
+//     path: "/mall",
+//     name: "mall",
+//     label: "商品管理",
+//     icon: Goods,
+//     url: "Mall",
+//   },
+//   {
+//     path: "/user",
+//     name: "user",
+//     label: "用户管理",
+//     icon: User,
+//     url: "User",
+//   },
+//   {
+//     path: "other",
+//     label: "其他",
+//     icon: Location,
+//     children: [
+//       {
+//         path: "/page1",
+//         name: "page1",
+//         label: "页面1",
+//         icon: Setting,
+//         url: "Page1",
+//       },
+//       {
+//         path: "/page2",
+//         name: "page2",
+//         label: "页面2",
+//         icon: Setting,
+//         url: "Page2",
+//       },
+//     ],
+//   },
+// ]);
+
+const list = computed(() => store.state.menuList);
 
 const noChildren = computed(() => list.value.filter((item) => !item.children));
 const hasChildren = computed(() => list.value.filter((item) => item.children));

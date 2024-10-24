@@ -10,21 +10,21 @@ const router = createRouter({
       component: Main,
       redirect: "/home",
       children: [
-        {
-          path: "/home",
-          name: "home",
-          component: () => import("@/views/HomeView.vue"),
-        },
-        {
-          path: "/user",
-          name: "user",
-          component: () => import("@/views/UserView.vue"),
-        },
-        {
-          path: "/mall",
-          name: "mall",
-          component: () => import("@/views/MallView.vue"),
-        },
+        // {
+        //   path: "/home",
+        //   name: "home",
+        //   component: () => import("@/views/HomeView.vue"),
+        // },
+        // {
+        //   path: "/user",
+        //   name: "user",
+        //   component: () => import("@/views/UserView.vue"),
+        // },
+        // {
+        //   path: "/mall",
+        //   name: "mall",
+        //   component: () => import("@/views/MallView.vue"),
+        // },
       ],
     },
     {

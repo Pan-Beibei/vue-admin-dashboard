@@ -1,53 +1,8 @@
 <script lang="ts" setup>
 import { computed } from "vue";
 
-import { useAllDataStore, type MenuItemType } from "@/stores";
+import { useAllDataStore, type MenuItemType, MenuIconsMap } from "@/stores";
 import { useRoute, useRouter } from "vue-router";
-
-// const list = shallowRef([
-//   {
-//     path: "/home",
-//     name: "home",
-//     label: "首页",
-//     icon: House,
-//     url: "Home",
-//   },
-//   {
-//     path: "/mall",
-//     name: "mall",
-//     label: "商品管理",
-//     icon: Goods,
-//     url: "Mall",
-//   },
-//   {
-//     path: "/user",
-//     name: "user",
-//     label: "用户管理",
-//     icon: User,
-//     url: "User",
-//   },
-//   {
-//     path: "other",
-//     label: "其他",
-//     icon: Location,
-//     children: [
-//       {
-//         path: "/page1",
-//         name: "page1",
-//         label: "页面1",
-//         icon: Setting,
-//         url: "Page1",
-//       },
-//       {
-//         path: "/page2",
-//         name: "page2",
-//         label: "页面2",
-//         icon: Setting,
-//         url: "Page2",
-//       },
-//     ],
-//   },
-// ]);
 
 const list = computed(() => store.state.menuList);
 
@@ -86,7 +41,7 @@ const handleMenu = (item: MenuItemType) => {
         :index="item.path"
         @click="handleMenu(item)"
       >
-        <component class="icons" :is="item.icon"></component>
+        <component class="icons" :is="MenuIconsMap[item.icon]"></component>
         <span>{{ item.label }}</span>
       </el-menu-item>
       <el-sub-menu
@@ -95,7 +50,7 @@ const handleMenu = (item: MenuItemType) => {
         :key="item.path"
       >
         <template #title>
-          <component class="icons" :is="item.icon"></component>
+          <component class="icons" :is="MenuIconsMap[item.icon]"></component>
           <span>{{ item.label }}</span>
         </template>
         <el-menu-item-group>
@@ -105,7 +60,10 @@ const handleMenu = (item: MenuItemType) => {
             :key="subItem.path"
             @click="handleMenu(subItem)"
           >
-            <component class="icons" :is="subItem.icon"></component>
+            <component
+              class="icons"
+              :is="MenuIconsMap[subItem.icon]"
+            ></component>
             <span>{{ subItem.label }}</span>
           </el-menu-item>
         </el-menu-item-group>

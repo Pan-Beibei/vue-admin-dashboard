@@ -1,4 +1,4 @@
-import type { ServerMenuItemType } from "@/stores";
+import type { MenuItemType } from "@/stores";
 
 export interface ApiDefinition {
   getTableData: () => Promise<TableDataResponse>;
@@ -128,7 +128,7 @@ export interface GetMenuParams {
 }
 
 export interface GetMenuResult {
-  menuList: Array<ServerMenuItemType>;
+  menuList: Array<MenuItemType>;
   token: string;
   message: string;
 }

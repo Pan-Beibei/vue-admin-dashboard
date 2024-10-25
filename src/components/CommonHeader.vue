@@ -1,6 +1,7 @@
 <script lang="ts" setup>
 import { useAllDataStore } from "@/stores";
 import { Menu } from "@element-plus/icons-vue";
+import { computed } from "vue";
 import { useRouter } from "vue-router";
 const getImageUrl = (user: string) => {
   return new URL(`../assets/images/${user}.png`, import.meta.url).href;
@@ -16,6 +17,8 @@ function handleLoginOut() {
   store.clean(router);
   router.push("/login");
 }
+
+const current = computed(() => store.state.currentMenu);
 </script>
 
 <template>
@@ -26,7 +29,9 @@ function handleLoginOut() {
       </el-button>
       <el-breadcrumb separator="/" class="bread">
         <el-breadcrumb-item :to="{ path: '/' }">首页</el-breadcrumb-item>
-        <el-breadcrumb-item>promotion detail</el-breadcrumb-item>
+        <el-breadcrumb-item v-if="current" :to="current.path">{{
+          current.label
+        }}</el-breadcrumb-item>
       </el-breadcrumb>
     </div>
     <div class="header-right">

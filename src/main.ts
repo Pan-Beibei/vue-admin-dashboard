@@ -19,6 +19,23 @@ async function prepareApp() {
   return Promise.resolve();
 }
 
+// 路由守卫
+function isRoute(to) {
+  return router.getRoutes().filter((item) => item.path === to.path).length > 0;
+}
+router.beforeEach((to) => {
+  if (to.path !== "/login" && !store.state.token) {
+    return {
+      name: "login",
+    };
+  }
+  if (!isRoute(to)) {
+    return {
+      name: "404",
+    };
+  }
+});
+
 const app = createApp(App);
 
 app.use(createPinia());
